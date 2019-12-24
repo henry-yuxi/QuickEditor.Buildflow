@@ -4,6 +4,8 @@ QuickEditor.Buildflow是基于Unity游戏引擎的自动化一键打包工具流
 
 同时整套方案都是开源, 方便二次开发定制。
 
+![image](https://github.com/henry-yuxi/QuickEditor.Buildflow/blob/master/ScreenShots/QuickBuildflow.png)
+
 ## How to use?
 
 [使用文档](https://github.com/henry-yuxi/QuickEditor.Buildflow/wiki)
