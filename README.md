@@ -2,7 +2,7 @@
 
 ## Overview
 
-QuickEditor.Buildflow是基于Unity游戏引擎的自动化一键打包工具流, 配合统一SDK接入框架 [QuickEngine.SDK](https://github.com/henry-yuxi/QuickEngine.SDK) [QuickEngine.SDK.Native](https://github.com/henry-yuxi/QuickEngine.SDK.Native), 能快速接入各种渠道SDK, 并方便导出各种渠道包。
+QuickEditor.Buildflow是基于Unity游戏引擎的自动化打包工具流, 配合统一SDK接入框架 [QuickEngine.SDK](https://github.com/henry-yuxi/QuickEngine.SDK) [QuickEngine.SDK.Native](https://github.com/henry-yuxi/QuickEngine.SDK.Native), 能快速接入各种渠道SDK, 并方便导出各种渠道包。
 
 同时整套方案都是开源, 方便二次开发定制。
 
