@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e1e232470efa348873bcf7ca3352d3, type: 3}
+  m_Name: ProjectBuildConfigure
+  m_EditorClassIdentifier: 
+  Settings:
+  - presetName: New Preset
+    buildApplication: 1
+    buildTarget: 13
+    buildType: 2
+    buildOptions: 0
+    androidBuildSystem: 1
+    androidExportSystem: 2
+    useAPKExpansionFiles: 0
+    overrideBuildPath: 0
+    buildPath: 
+    overrideExecutableName: 0
+    executableName: 
+    useSystemTime: 1
+    version: 1.0.0
+    buildNumber: 0
+    channels: 
+    plugins: 

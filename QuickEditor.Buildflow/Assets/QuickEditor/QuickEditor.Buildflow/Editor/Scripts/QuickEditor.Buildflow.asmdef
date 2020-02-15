@@ -1,0 +1,10 @@
+{
+    "name": "QuickEditor.Buildflow",
+    "references": [],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

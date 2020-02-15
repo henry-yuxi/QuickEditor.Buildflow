@@ -4,3 +4,15 @@ QuickEditor.Buildflow/Temp/
 QuickEditor.Buildflow/Library/
 
 QuickEditor.Buildflow/Packages/
+
+QuickEditor.Buildflow/Buildflow/BuildOutput/
+
+QuickEditor.Buildflow/Buildflow/Bundles/
+
+QuickEditor.Buildflow/obj/
+
+QuickEditor.Buildflow/.vs/
+
+QuickEditor.Buildflow/Assets/Plugins/Sirenix/
+
+QuickEditor.Buildflow/Assets/Plugins/Sirenix.meta

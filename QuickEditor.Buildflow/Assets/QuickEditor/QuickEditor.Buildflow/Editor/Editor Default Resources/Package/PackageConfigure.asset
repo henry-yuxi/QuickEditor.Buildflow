@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6218693b7d5903449fc60568756eae5, type: 3}
+  m_Name: PackageConfigure
+  m_EditorClassIdentifier: 
+  Package:
+    Name: Quick Buildflow
+    PackageName: QuickEditor.Buildflow
+    Version: 0.0.1
+    Author: Henry
+    Copyright: "Copyright \xA9 2019 Henry"
+    kAssetPaths:
+    - Assets/QuickEditor
+    RevealInFinder: 1
