@@ -1,0 +1,4 @@
+
+密钥工具创建密钥
+keytool -genkey -alias Chinar -keyalg RSA -validity 36500 -keystore Chinar.keystore 
+密钥工具 -生成秘钥 -别名 密钥名称 -加密方式 非对称 -有效性（按天算）十年 -密钥商店（生成文件） 秘钥库文件名.后缀
