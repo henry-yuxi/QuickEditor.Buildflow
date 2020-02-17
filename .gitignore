@@ -20,3 +20,5 @@ QuickEditor.Buildflow/Assets/Plugins/Sirenix.meta
 QuickEditor.Buildflow/Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj
 
 QuickEditor.Buildflow/Sirenix.OdinInspector.CompatibilityLayer.csproj
+
+QuickEditor.Buildflow/Assembly-CSharp-Editor.csproj
