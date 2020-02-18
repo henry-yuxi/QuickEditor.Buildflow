@@ -5,7 +5,7 @@ namespace QuickEditor.Buildflow
     using UnityEditor;
     using UnityEngine;
 
-    public class BatchModeBuild
+    public class UnityBatchBuildTools
     {
         //Unitys command line arguments
         protected const string BATCH_OPT_APPEND_SYMBOLS = "appendSymbols";

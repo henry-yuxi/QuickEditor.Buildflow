@@ -43,11 +43,11 @@ autoRefresh(){
 	-executeMethod ${UNITY_EXECUTE_METHOD} 
 }
 
-#UNITY_EXECUTE_METHOD="QuickEditor.Buildflow.BatchModeBuild.Refresh"
+#UNITY_EXECUTE_METHOD="QuickEditor.Buildflow.UnityBatchBuildTools.Refresh"
 
 #autoRefresh
 
-UNITY_EXECUTE_METHOD="QuickEditor.Buildflow.BatchModeBuild.BuildPackage"
+UNITY_EXECUTE_METHOD="QuickEditor.Buildflow.UnityBatchBuildTools.BuildPackage"
 
 autoBuild
 

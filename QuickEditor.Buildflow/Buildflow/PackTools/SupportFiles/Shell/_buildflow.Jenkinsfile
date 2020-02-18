@@ -54,7 +54,7 @@ pipeline {
       )
     string(
       name: 'UnityBatchExecuteMethod', 
-      defaultValue: 'QuickEditor.Buildflow.BatchModeBuildCLI.BuildPackage', 
+      defaultValue: 'QuickEditor.Buildflow.UnityBatchBuildTools.BuildPackage', 
       description: 'Unity命令行打包执行的方法'
       )
 

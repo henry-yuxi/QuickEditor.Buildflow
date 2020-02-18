@@ -20,7 +20,7 @@ autoRefresh(){
   -logFile $UNITY_PROJ_LOG_PATH
 }
 
-UNITY_EXECUTE_METHOD="QuickEditor.Buildflow.BatchModeBuild.Refresh"
+UNITY_EXECUTE_METHOD="QuickEditor.Buildflow.UnityBatchBuildTools.Refresh"
 
 autoRefresh
 

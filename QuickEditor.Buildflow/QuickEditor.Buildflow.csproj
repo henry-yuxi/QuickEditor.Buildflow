@@ -61,7 +61,7 @@
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\Configure\ProjectSDKConfigure.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\Configure\ProjectXcodeConfigure.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\AndroidManifestModify.cs" />
-     <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\Batch\BatchModeBuild.cs" />
+     <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\Batch\UnityBatchBuildTools.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\BuildEnvsOptions.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\BuildPipelineAsset.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\BuildPipelineCommonTools.cs" />
