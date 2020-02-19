@@ -205,7 +205,7 @@ namespace QuickEditor.Buildflow
 
         [Sirenix.OdinInspector.Indent(0)]
 #endif
-        public int buildNumber = 0;
+        public int bundleVersionCode = 0;
 
         #endregion Version Settings
 

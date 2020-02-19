@@ -1,0 +1,8 @@
+﻿e:
+cd E:\AndroidSDK\platform-tools
+
+网易MUMU模拟器：adb connect 127.0.0.1:7555
+夜神模拟器：adb connect 127.0.0.1:62001
+逍遥安卓模拟器： adb connect 127.0.0.1:21503
+天天模拟器：adb connect 127.0.0.1:6555
+海马玩模拟器 ：adb connect 127.0.0.1:53001

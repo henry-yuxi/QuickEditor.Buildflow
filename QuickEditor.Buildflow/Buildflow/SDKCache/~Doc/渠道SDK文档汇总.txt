@@ -1,0 +1,9 @@
+﻿OPPO：https://open.oppomobile.com/wiki/doc#id=10179
+
+VIVO：https://dev.vivo.com.cn/documentCenter/doc/6
+
+华为：https://developer.huawei.com/consumer/cn/service/hms/catalog/HuaweiJointOperation.html?page=hmssdk_jointOper_sdkdownload
+华为的有HMS Agent、HMS SDK两个SDK版本
+
+B站SDK地址为：http://open.biligame.com/wiki/bili_b_android_sdk/
+B站数据SDK地址为：http://open.biligame.com/wiki/bili_android_data_sdk/

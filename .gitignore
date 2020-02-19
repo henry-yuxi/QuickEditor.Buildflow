@@ -24,3 +24,5 @@ QuickEditor.Buildflow/Sirenix.OdinInspector.CompatibilityLayer.csproj
 QuickEditor.Buildflow/Assembly-CSharp-Editor.csproj
 
 *.csproj
+
+QuickEditor.Buildflow/Buildflow/SDKCache/Temp/

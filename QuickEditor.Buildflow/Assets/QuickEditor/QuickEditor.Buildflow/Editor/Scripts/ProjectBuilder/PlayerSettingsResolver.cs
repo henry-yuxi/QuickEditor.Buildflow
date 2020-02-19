@@ -180,7 +180,11 @@ namespace QuickEditor.Buildflow
                 }
                 else
                 {
+#if UNITY_2017_1_OR_NEWER
                     if (EditorUserBuildSettings.SwitchActiveBuildTarget(targetGroup, target))
+#else
+                    if (EditorUserBuildSettings.SwitchActiveBuildTarget(target))
+#endif
                     {
                         if (action != null) { action(); }
                     }

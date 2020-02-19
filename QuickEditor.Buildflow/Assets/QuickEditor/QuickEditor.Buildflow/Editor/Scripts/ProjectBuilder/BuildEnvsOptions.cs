@@ -164,7 +164,7 @@ namespace QuickEditor.Buildflow
 
             this.buildType = presetSettings.buildType;
             this.androidBuildSystem = presetSettings.androidBuildSystem;
-            this.buildNumber = presetSettings.buildNumber;
+            this.buildNumber = presetSettings.bundleVersionCode;
             if (presetSettings.useSystemTime)
             {
                 DateTime date = DateTime.Now;

@@ -87,7 +87,7 @@ namespace QuickEditor.Buildflow
             {
                 return string.Empty;
             }
-            string format = "{0}/PluginLibs/{1}/{2}/libs";
+            string format = "{0}/PluginLibs/{1}/{2}/module";
             return string.Format(format, ExternalSDKCachePath, platform, pluginName);
         }
 

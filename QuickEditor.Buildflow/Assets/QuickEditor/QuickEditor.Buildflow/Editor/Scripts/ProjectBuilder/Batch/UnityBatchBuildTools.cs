@@ -58,7 +58,7 @@ namespace QuickEditor.Buildflow
             ProjectBuildPresetSettings buildPresetSettings = new ProjectBuildPresetSettings()
             {
                 buildTarget = target,
-                buildNumber = mBatchBuildNumber,
+                bundleVersionCode = mBatchBuildNumber,
                 version = mBatchBundleVersion,
                 overrideBuildPath = true,
                 buildPath = mBatchBuildPath,

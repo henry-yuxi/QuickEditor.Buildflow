@@ -68,7 +68,7 @@ namespace QuickEditor.Buildflow
 
         #region Build MenuItem Funcs
 
-        [MenuItem(GettingStartedMenuEntry + "Auto Build Tool", false, GettingStartedMenuEntryPriority + 100)]
+        [MenuItem(GettingStartedMenuEntry + "Build Tools", false, GettingStartedMenuEntryPriority + 100)]
         public static void OpenProjectBuildWindow()
         {
 #if ODIN_INSPECTOR
