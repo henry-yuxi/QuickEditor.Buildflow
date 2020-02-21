@@ -48,18 +48,16 @@ namespace QuickEditor.Buildflow
 
         protected readonly string mProjectPath;
         protected readonly string mPlistPath;
-        protected PlistDocument mPlist;
-        protected PlistElementDict mPlistRoot;
         protected bool mCanLoad = true;
+
+        protected PlistDocument document { private set; get; }
+        protected PlistElementDict root { private set; get; }
 
         public QuickInfoPlist(string pathToBuildProject)
         {
             mProjectPath = pathToBuildProject;
             mPlistPath = Path.Combine(pathToBuildProject, INFO_PLIST_NAME);
         }
-
-        public PlistDocument Plist { get { return mPlist; } }
-        public PlistElementDict PlistRoot { get { return mPlistRoot; } }
 
         #region 文件读写相关方法
 
@@ -79,14 +77,14 @@ namespace QuickEditor.Buildflow
 
         public void Load()
         {
-            mPlist = new PlistDocument();
-            mPlist.ReadFromFile(mPlistPath);
-            mPlistRoot = mPlist.root;
+            document = new PlistDocument();
+            document.ReadFromFile(mPlistPath);
+            root = document.root;
         }
 
         public void Write()
         {
-            mPlist.WriteToFile(mPlistPath);
+            document.WriteToFile(mPlistPath);
         }
 
         public void Dispose()
@@ -101,13 +99,13 @@ namespace QuickEditor.Buildflow
         public void SetApplicationQueriesSchemes(List<string> applicationQueriesSchemes)
         {
             PlistElementArray queriesSchemes;
-            if (mPlistRoot.values.ContainsKey(APPLICATION_QUERIES_SCHEMES_KEY))
+            if (root.values.ContainsKey(APPLICATION_QUERIES_SCHEMES_KEY))
             {
-                queriesSchemes = mPlistRoot[APPLICATION_QUERIES_SCHEMES_KEY].AsArray();
+                queriesSchemes = root[APPLICATION_QUERIES_SCHEMES_KEY].AsArray();
             }
             else
             {
-                queriesSchemes = mPlistRoot.CreateArray(APPLICATION_QUERIES_SCHEMES_KEY);
+                queriesSchemes = root.CreateArray(APPLICATION_QUERIES_SCHEMES_KEY);
             }
 
             foreach (string queriesScheme in applicationQueriesSchemes)
@@ -126,13 +124,13 @@ namespace QuickEditor.Buildflow
         public void SetBackgroundModes(List<string> modes)
         {
             PlistElementArray backModes;
-            if (mPlistRoot.values.ContainsKey(UI_BACKGROUND_MODES_KEY))
+            if (root.values.ContainsKey(UI_BACKGROUND_MODES_KEY))
             {
-                backModes = mPlistRoot[UI_BACKGROUND_MODES_KEY].AsArray();
+                backModes = root[UI_BACKGROUND_MODES_KEY].AsArray();
             }
             else
             {
-                backModes = mPlistRoot.CreateArray(UI_BACKGROUND_MODES_KEY);
+                backModes = root.CreateArray(UI_BACKGROUND_MODES_KEY);
             }
 
             foreach (string mode in modes)
@@ -150,13 +148,13 @@ namespace QuickEditor.Buildflow
         public void SetURLSchemes(string role, string bundleURLName, List<string> schemes)
         {
             PlistElementArray urlTypes;
-            if (mPlistRoot.values.ContainsKey(BUNDLE_URL_TYPES_KEY))
+            if (root.values.ContainsKey(BUNDLE_URL_TYPES_KEY))
             {
-                urlTypes = mPlistRoot[BUNDLE_URL_TYPES_KEY].AsArray();
+                urlTypes = root[BUNDLE_URL_TYPES_KEY].AsArray();
             }
             else
             {
-                urlTypes = mPlistRoot.CreateArray(BUNDLE_URL_TYPES_KEY);
+                urlTypes = root.CreateArray(BUNDLE_URL_TYPES_KEY);
             }
 
             PlistElementDict itmeDict = urlTypes.AddDict();
@@ -190,13 +188,13 @@ namespace QuickEditor.Buildflow
         public void SetATS(bool enableATS)
         {
             PlistElementDict atsDict;
-            if (mPlistRoot.values.ContainsKey(ATS_KEY))
+            if (root.values.ContainsKey(ATS_KEY))
             {
-                atsDict = mPlistRoot[ATS_KEY].AsDict();
+                atsDict = root[ATS_KEY].AsDict();
             }
             else
             {
-                atsDict = mPlistRoot.CreateDict(ATS_KEY);
+                atsDict = root.CreateDict(ATS_KEY);
             }
             atsDict.SetBoolean(ALLOWS_ARBITRARY_LOADS_KEY, enableATS);
         }
@@ -209,13 +207,13 @@ namespace QuickEditor.Buildflow
         {
             if (domains == null || domains.Count == 0) { return; }
             PlistElementDict atsDict;
-            if (mPlistRoot.values.ContainsKey(ATS_KEY))
+            if (root.values.ContainsKey(ATS_KEY))
             {
-                atsDict = mPlistRoot[ATS_KEY].AsDict();
+                atsDict = root[ATS_KEY].AsDict();
             }
             else
             {
-                atsDict = mPlistRoot.CreateDict(ATS_KEY);
+                atsDict = root.CreateDict(ATS_KEY);
             }
             PlistElementDict domainsDict;
             if (atsDict.values.ContainsKey(EXCEPTION_DOMAINS_KEY))
@@ -248,8 +246,8 @@ namespace QuickEditor.Buildflow
         /// </summary>
         public void SetStatusBar(bool enable)
         {
-            mPlistRoot.SetBoolean(STATUS_HIDDEN_KEY, !enable);
-            mPlistRoot.SetBoolean(STATUS_BAR_APPEARANCE_KEY, enable);
+            root.SetBoolean(STATUS_HIDDEN_KEY, !enable);
+            root.SetBoolean(STATUS_BAR_APPEARANCE_KEY, enable);
         }
 
         /// <summary>
@@ -258,7 +256,7 @@ namespace QuickEditor.Buildflow
         /// <param name="enable"></param>
         public void SetFullScreen(bool enable)
         {
-            mPlistRoot.SetBoolean(UI_REQUIRES_FULL_SCREEN, enable);
+            root.SetBoolean(UI_REQUIRES_FULL_SCREEN, enable);
         }
 
         /// <summary>
@@ -269,13 +267,13 @@ namespace QuickEditor.Buildflow
             if (delete)
             {
                 //设置开始画面
-                if (mPlistRoot.values.ContainsKey(UI_LAUNCHI_IMAGES_KEY))
+                if (root.values.ContainsKey(UI_LAUNCHI_IMAGES_KEY))
                 {
-                    mPlistRoot.values.Remove(UI_LAUNCHI_IMAGES_KEY);
+                    root.values.Remove(UI_LAUNCHI_IMAGES_KEY);
                 }
-                if (mPlistRoot.values.ContainsKey(UI_LAUNCHI_STORYBOARD_NAME_KEY))
+                if (root.values.ContainsKey(UI_LAUNCHI_STORYBOARD_NAME_KEY))
                 {
-                    mPlistRoot.values.Remove(UI_LAUNCHI_STORYBOARD_NAME_KEY);
+                    root.values.Remove(UI_LAUNCHI_STORYBOARD_NAME_KEY);
                 }
             }
         }
@@ -289,7 +287,7 @@ namespace QuickEditor.Buildflow
         {
             foreach (var data in datas)
             {
-                mPlistRoot.SetString(data, description);
+                root.SetString(data, description);
             }
         }
 
@@ -350,17 +348,17 @@ namespace QuickEditor.Buildflow
 
         public void AddStringKey(string key, string val)
         {
-            mPlistRoot.SetString(key, val);
+            root.SetString(key, val);
             Debug.Log(string.Format("Set String -> Key : {0}, Value : {1}", key, val));
             //rootDic.SetBoolean("ITSAppUsesNonExemptEncryption", false);
 
             // for share sdk 截屏
-            mPlistRoot.SetString("NSPhotoLibraryUsageDescription", "We need use photo library usage");
+            root.SetString("NSPhotoLibraryUsageDescription", "We need use photo library usage");
         }
 
         public void AddBooleanKey(string key, bool val)
         {
-            mPlistRoot.SetBoolean(key, val);
+            root.SetBoolean(key, val);
             Debug.Log(string.Format("Set Boolean -> Key : {0}, Value : {1}", key, val));
         }
 
@@ -371,12 +369,12 @@ namespace QuickEditor.Buildflow
         public void SetBundleDevelopmentRegion(string value)
         {
             // location native development region
-            mPlistRoot.SetString("CFBundleDevelopmentRegion", "zh_CN");
+            root.SetString("CFBundleDevelopmentRegion", "zh_CN");
         }
 
         public void SetPermission(string key, string val)
         {
-            mPlistRoot.SetString(key, val);
+            root.SetString(key, val);
             Debug.Log(string.Format("Set Permission : {0}, Value : {1}", key, val));
         }
     }
