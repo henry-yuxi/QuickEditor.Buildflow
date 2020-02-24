@@ -55,7 +55,9 @@ If you already installed. Open the Package Manager UI, you will see the git icon
 ### Package URL's
 | Version  |     Link      |
 |----------|---------------|
+<!--
 | 0.0.1 | https://github.com/henry-yuxi/QuickEditor.Buildflow.git#0.0.1 |
+-->
 
 ## See Also
 GitHub Page : https://github.com/henry-yuxi/QuickEditor.Buildflow/
