@@ -131,7 +131,7 @@ namespace QuickEditor.Buildflow
 
                 public void ApplyPlayerSettings()
                 {
-                    PlayerSettingsResolver.SetScreenOrientation(defaultOrientation, allowedPortrait, allowedPortraitUpsideDown, allowedLandscapeRight, allowedLandscapeLeft);
+                    UnityEditorResolver.PlayerSettings.SetScreenOrientation(defaultOrientation, allowedPortrait, allowedPortraitUpsideDown, allowedLandscapeRight, allowedLandscapeLeft);
                 }
             }
 
@@ -164,11 +164,11 @@ namespace QuickEditor.Buildflow
 
                 public void ApplyPlayerSettings()
                 {
-                    PlayerSettingsResolver.ApplySettings(graphicsJobs: false, protectGraphicsMemory: true);
+                    UnityEditorResolver.PlayerSettings.ApplySettings(graphicsJobs: false, protectGraphicsMemory: true);
                     //PlayerSettingsResolver.SetApiCompatibilityLevel(BuildTargetGroup.Android, ApiCompatibilityLevel.NET_4_6);
-                    PlayerSettingsResolver.Android.ApplySettings(androidIsGame: androidIsGame, minSdkVersion: minSdkVersion, targetSdkVersion: targetSdkVersion, preferredInstallLocation: preferredInstallLocation, forceInternetPermission: forceInternetPermission, forceSDCardPermission: forceSDCardPermission);
+                    UnityEditorResolver.PlayerSettings.Android.ApplySettings(androidIsGame: androidIsGame, minSdkVersion: minSdkVersion, targetSdkVersion: targetSdkVersion, preferredInstallLocation: preferredInstallLocation, forceInternetPermission: forceInternetPermission, forceSDCardPermission: forceSDCardPermission);
 #if UNITY_2018_1_OR_NEWER
-                    PlayerSettingsResolver.Android.ApplySettings(targetArchitectures: targetArchitectures);
+                    UnityEditorResolver.PlayerSettings.Android.ApplySettings(targetArchitectures: targetArchitectures);
 #else
                     PlayerSettingsResolver.Android.ApplySettings(targetDevice: targetDevice);
 #endif
@@ -188,7 +188,7 @@ namespace QuickEditor.Buildflow
 
                 public void ApplyPlayerSettings()
                 {
-                    PlayerSettingsResolver.iOS.ApplySettings(targetSDK: targetSDK, targetDevice: targetDevice, targetOSVersionString: targetOSVersionString);
+                    UnityEditorResolver.PlayerSettings.iOS.ApplySettings(targetSDK: targetSDK, targetDevice: targetDevice, targetOSVersionString: targetOSVersionString);
                 }
             }
 
@@ -218,7 +218,7 @@ namespace QuickEditor.Buildflow
             {
                 BuildTarget target = EditorUserBuildSettings.activeBuildTarget;
                 BuildTargetGroup targetGroup = BuildPipelineCommonTools.BuildUtils.GetBuildTargetGroup(target);
-                string[] symbols = BuildPipelineCommonTools.ScriptingDefineSymbolsUtils.SplitScriptingDefineSymbols(PlayerSettings.GetScriptingDefineSymbolsForGroup(targetGroup));
+                string[] symbols = UnityEditorResolver.ScriptingDefineSymbols.SplitScriptingDefineSymbols(PlayerSettings.GetScriptingDefineSymbolsForGroup(targetGroup));
                 foreach (var symbol in symbols)
                 {
                     if (symbol == null) { continue; }
@@ -250,7 +250,7 @@ namespace QuickEditor.Buildflow
 
                 BuildTarget target = EditorUserBuildSettings.activeBuildTarget;
                 BuildTargetGroup targetGroup = BuildPipelineCommonTools.BuildUtils.GetBuildTargetGroup(target);
-                PlayerSettings.SetScriptingDefineSymbolsForGroup(targetGroup, BuildPipelineCommonTools.ScriptingDefineSymbolsUtils.MergeScriptingDefineSymbols(array));//宏定义的设置
+                UnityEditorResolver.ScriptingDefineSymbols.SetScriptingDefineSymbols(targetGroup, array);//宏定义的设置
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
             }
@@ -307,7 +307,7 @@ namespace QuickEditor.Buildflow
 #endif
             public void ApplySettings()
             {
-                PlayerSettingsResolver.iOS.ApplySigningSettings(automaticSigning: automaticSigning, appleDeveloperTeamID: appleDeveloperTeamID, provisioningProfileID: provisioningProfileID, provisioningProfileType: provisioningProfileType);
+                UnityEditorResolver.PlayerSettings.iOS.ApplySigningSettings(automaticSigning: automaticSigning, appleDeveloperTeamID: appleDeveloperTeamID, provisioningProfileID: provisioningProfileID, provisioningProfileType: provisioningProfileType);
             }
         }
 
@@ -359,7 +359,7 @@ namespace QuickEditor.Buildflow
 #endif
             public void ApplySettings()
             {
-                PlayerSettingsResolver.Android.ApplyKeystoreSettings(keystoreFile, keystorePassword, keystoreAliasName, keystoreAliasPassword);
+                UnityEditorResolver.PlayerSettings.Android.ApplyKeystoreSettings(keystoreFile, keystorePassword, keystoreAliasName, keystoreAliasPassword);
             }
         }
     }

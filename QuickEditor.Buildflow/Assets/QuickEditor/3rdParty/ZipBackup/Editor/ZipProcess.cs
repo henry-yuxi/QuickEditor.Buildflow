@@ -2,8 +2,10 @@
 using System.Diagnostics;
 using UnityEditor;
 
-namespace ZipBackup {
-    public abstract class ZipProcess {
+namespace ZipBackup
+{
+    public abstract class ZipProcess
+    {
 
         public DataReceivedEventHandler outputDataReceived = (sender, args) => { };
         public DataReceivedEventHandler outputDataReceivedThreaded = (sender, args) => { };
@@ -16,7 +18,8 @@ namespace ZipBackup {
         public string[] sources { get; protected set; }
         public Process process { get; protected set; }
 
-        public virtual bool Start() {
+        public virtual bool Start()
+        {
             process = new Process();
             process.StartInfo = GetProcessStartInfo();
             process.EnableRaisingEvents = true;
@@ -34,7 +37,8 @@ namespace ZipBackup {
             return started;
         }
 
-        public virtual bool Start(bool waitForExit) {
+        public virtual bool Start(bool waitForExit)
+        {
             var started = Start();
 
             if (waitForExit && started)
@@ -45,7 +49,8 @@ namespace ZipBackup {
 
         protected abstract ProcessStartInfo GetProcessStartInfo();
 
-        protected void OutputDataReceived(object sender, DataReceivedEventArgs args) {
+        protected void OutputDataReceived(object sender, DataReceivedEventArgs args)
+        {
             if (string.IsNullOrEmpty(args.Data))
                 return;
 
@@ -53,7 +58,8 @@ namespace ZipBackup {
 
             var update = new EditorApplication.CallbackFunction(() => { });
 
-            update = () => {
+            update = () =>
+            {
                 EditorApplication.update -= update;
                 outputDataReceived(sender, args);
             };
@@ -61,7 +67,8 @@ namespace ZipBackup {
             EditorApplication.update += update;
         }
 
-        protected void ErrorDataReceived(object sender, DataReceivedEventArgs args) {
+        protected void ErrorDataReceived(object sender, DataReceivedEventArgs args)
+        {
             if (string.IsNullOrEmpty(args.Data))
                 return;
 
@@ -69,7 +76,8 @@ namespace ZipBackup {
 
             var update = new EditorApplication.CallbackFunction(() => { });
 
-            update = () => {
+            update = () =>
+            {
                 EditorApplication.update -= update;
                 errorDataReceived(sender, args);
             };
@@ -77,12 +85,14 @@ namespace ZipBackup {
             EditorApplication.update += update;
         }
 
-        protected void Exited(object sender, EventArgs args) {
+        protected void Exited(object sender, EventArgs args)
+        {
             onExitThreaded(sender, args);
 
             var update = new EditorApplication.CallbackFunction(() => { });
 
-            update = () => {
+            update = () =>
+            {
                 EditorApplication.update -= update;
                 onExit(sender, args);
             };

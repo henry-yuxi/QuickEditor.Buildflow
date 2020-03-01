@@ -38,7 +38,7 @@ namespace QuickEditor.Buildflow
         public static void Build(ProjectBuildPresetSettings setting)
         {
             BuildPipelineExecutor.DefaultBuildEnvsOptions.SetBuildSettings(setting);
-            PlayerSettingsResolver.EditorBuildSettings.SwitchActiveBuildTarget(BuildPipelineExecutor.DefaultBuildEnvsOptions.targetGroup, BuildPipelineExecutor.DefaultBuildEnvsOptions.target, () =>
+            UnityEditorResolver.EditorBuildSettings.SwitchActiveBuildTarget(BuildPipelineExecutor.DefaultBuildEnvsOptions.targetGroup, BuildPipelineExecutor.DefaultBuildEnvsOptions.target, () =>
             {
                 PreBuild(BuildPipelineExecutor.DefaultBuildEnvsOptions);
             });

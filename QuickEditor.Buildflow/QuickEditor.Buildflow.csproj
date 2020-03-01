@@ -75,12 +75,12 @@
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\Common\MainThreadEventsExecutor.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\Common\ProcessUtils.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\Common\UnityScripsCompileEventsExecutor.cs" />
-     <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\PlayerSettingsResolver.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\PlayerSettingsSnapshot.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\UIWindows\AboutWindow.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\UIWindows\AndroidDevicesWindow.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\UIWindows\GettingStartedWindow.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\UIWindows\ProjectBuildWindow.cs" />
+     <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectBuilder\UnityEditorResolver.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectNativeExtension\Core\Platforms\AndroidPostProcess.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectNativeExtension\Core\Platforms\iOSPostProcess.cs" />
      <Compile Include="Assets\QuickEditor\QuickEditor.Buildflow\Editor\Scripts\ProjectNativeExtension\Core\Platforms\StandalonePostProcess.cs" />

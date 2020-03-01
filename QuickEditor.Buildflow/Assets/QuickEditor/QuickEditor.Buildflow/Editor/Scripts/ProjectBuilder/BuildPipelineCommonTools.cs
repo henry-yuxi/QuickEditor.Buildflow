@@ -86,17 +86,6 @@ namespace QuickEditor.Buildflow
                 }
             }
 
-            public static string[] GetEnabledScenes()
-            {
-                List<string> scenes = new List<string>();
-                foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
-                {
-                    if (!scene.enabled) continue;
-                    scenes.Add(scene.path);
-                }
-                return scenes.ToArray();
-            }
-
             public static Dictionary<BuildTarget, string> BuildTargetDisplayNames = new Dictionary<BuildTarget, string>()
             {
                 { BuildTarget.Android, "Android" },
@@ -342,75 +331,6 @@ namespace QuickEditor.Buildflow
             }
         }
 
-        internal sealed class ScriptingDefineSymbolsUtils
-        {
-            private static readonly char[] SPLIT_DIVIDER = new char[] { ';' };
-
-            private const string JOIN_SEPARATOR = ";";
-
-            public static void AddScriptingDefineSymbols(BuildTargetGroup buildTargetGroup, string addDefines)
-            {
-                if (string.IsNullOrEmpty(addDefines)) { return; }
-                string[] addDefineArray = SplitScriptingDefineSymbols(addDefines);
-                if (addDefineArray == null || addDefineArray.Count() == 0) { return; }
-                bool changed = false;
-                string mScriptingDefineSymbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup);
-                var mDefineSymbolList = SplitScriptingDefineSymbols(mScriptingDefineSymbols).ToList();
-                foreach (var symbol in addDefineArray)
-                {
-                    if (!mDefineSymbolList.Contains(symbol))
-                    {
-                        mDefineSymbolList.Add(symbol);
-                        changed = true;
-                    }
-                }
-                if (changed)
-                {
-                    SetScriptingDefineSymbols(buildTargetGroup, mDefineSymbolList.ToArray());
-                }
-            }
-
-            public static void RemoveScriptingDefineSymbols(BuildTargetGroup buildTargetGroup, string removeDefines)
-            {
-                if (string.IsNullOrEmpty(removeDefines)) { return; }
-                string[] removeDefineArray = SplitScriptingDefineSymbols(removeDefines);
-                if (removeDefineArray == null || removeDefineArray.Count() == 0) { return; }
-                bool changed = false;
-                string mScriptingDefineSymbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup);
-                var mDefineSymbolList = SplitScriptingDefineSymbols(mScriptingDefineSymbols).ToList();
-                foreach (var macro in removeDefineArray)
-                {
-                    if (mDefineSymbolList.Contains(macro))
-                    {
-                        mDefineSymbolList.RemoveAll((symbol) => symbol == macro);
-                        changed = true;
-                    }
-                }
-                if (changed)
-                {
-                    SetScriptingDefineSymbols(buildTargetGroup, mDefineSymbolList.ToArray());
-                }
-            }
-
-            public static string MergeScriptingDefineSymbols(string[] defineSymbols)
-            {
-                string merge = string.Join(JOIN_SEPARATOR, defineSymbols);
-                return merge;
-            }
-
-            public static string[] SplitScriptingDefineSymbols(string defineSymbols)
-            {
-                string[] split = defineSymbols.Split(SPLIT_DIVIDER, StringSplitOptions.RemoveEmptyEntries);
-                return split;
-            }
-
-            public static void SetScriptingDefineSymbols(BuildTargetGroup buildTargetGroup, string[] symbols)
-            {
-                string symbos = MergeScriptingDefineSymbols(symbols);
-                PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, symbos);
-            }
-        }
-
         public sealed class SDKUtils
         {
             public static void SetDefaultIcon()
@@ -504,7 +424,7 @@ namespace QuickEditor.Buildflow
                     Debug.LogError(string.Format("Dir: {0} 下未找到匹配的资源, SplashLogos设置失败", filterSearchPath));
                     return;
                 }
-                PlayerSettingsResolver.SetSplashScreen(backgroundColor: Color.white, show: true, showUnityLogo: false, drawMode: PlayerSettings.SplashScreen.DrawMode.AllSequential);
+                UnityEditorResolver.PlayerSettings.SetSplashScreen(backgroundColor: Color.white, show: true, showUnityLogo: false, drawMode: PlayerSettings.SplashScreen.DrawMode.AllSequential);
                 List<PlayerSettings.SplashScreenLogo> screenLogos = new List<PlayerSettings.SplashScreenLogo>();
                 screenLogos.Clear();
                 for (int i = 0; assets != null && i < assets.Length; i++)
@@ -516,7 +436,7 @@ namespace QuickEditor.Buildflow
 
                     screenLogos.Add(PlayerSettings.SplashScreenLogo.Create(2f, asset));
                 }
-                PlayerSettingsResolver.SetSplashScreen(screenLogos.ToArray());
+                UnityEditorResolver.PlayerSettings.SetSplashScreen(screenLogos.ToArray());
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
                 Debug.Log("Set splash logos succeeded");
@@ -548,7 +468,7 @@ namespace QuickEditor.Buildflow
                     Debug.LogError(string.Format("Dir: {0} 下未找到匹配的资源, SplashScreen设置失败", filterSearchPath));
                     return;
                 }
-                PlayerSettingsResolver.SetSplashScreen(backgroundColor: Color.white, show: true, showUnityLogo: false, drawMode: PlayerSettings.SplashScreen.DrawMode.AllSequential);
+                UnityEditorResolver.PlayerSettings.SetSplashScreen(backgroundColor: Color.white, show: true, showUnityLogo: false, drawMode: PlayerSettings.SplashScreen.DrawMode.AllSequential);
 
                 List<Texture2D> mSplashs = new List<Texture2D>();
                 mSplashs.Clear();
@@ -565,7 +485,7 @@ namespace QuickEditor.Buildflow
                 switch (buildTarget)
                 {
                     case BuildTarget.iOS:
-                        PlayerSettingsResolver.iOS.SetiPhoneLaunchScreenType(iOSLaunchScreenType.ImageAndBackgroundRelative);
+                        UnityEditorResolver.PlayerSettings.iOS.SetiPhoneLaunchScreenType(iOSLaunchScreenType.ImageAndBackgroundRelative);
                         QuickEditorUtils.SetSplashScreen("iOSLaunchScreenPortrait", mSplashs[0]);
                         QuickEditorUtils.SetSplashScreen("iOSLaunchScreenLandscape", mSplashs[0]);
                         break;
@@ -585,12 +505,12 @@ namespace QuickEditor.Buildflow
 
             private static void RestoreSplashData()
             {
-                PlayerSettingsResolver.SetSplashScreen(logos: null);
+                UnityEditorResolver.PlayerSettings.SetSplashScreen(logos: null);
                 BuildTarget buildTarget = EditorUserBuildSettings.activeBuildTarget;
                 switch (buildTarget)
                 {
                     case BuildTarget.iOS:
-                        PlayerSettingsResolver.iOS.SetiPhoneLaunchScreenType(iOSLaunchScreenType.None);
+                        UnityEditorResolver.PlayerSettings.iOS.SetiPhoneLaunchScreenType(iOSLaunchScreenType.None);
                         QuickEditorUtils.SetSplashScreen("iOSLaunchScreenPortrait", null);
                         QuickEditorUtils.SetSplashScreen("iOSLaunchScreenLandscape", null);
                         break;

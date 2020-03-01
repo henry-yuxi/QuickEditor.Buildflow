@@ -105,9 +105,9 @@ namespace QuickEditor.Buildflow
 #endif
             public void ApplySettings()
             {
-                PlayerSettingsResolver.SetCompanyName(companyName);
-                PlayerSettingsResolver.SetProductName(productName);
-                PlayerSettingsResolver.SetApplicationIdentifier(buildTarget == BuildTarget.NoTarget ? BuildTargetGroup.Unknown : activeTargetGroup, bundleIdentifier);
+                UnityEditorResolver.PlayerSettings.SetCompanyName(companyName);
+                UnityEditorResolver.PlayerSettings.SetProductName(productName);
+                UnityEditorResolver.PlayerSettings.SetApplicationIdentifier(buildTarget == BuildTarget.NoTarget ? BuildTargetGroup.Unknown : activeTargetGroup, bundleIdentifier);
 
                 if (curKeystoreSettings != null)
                 {

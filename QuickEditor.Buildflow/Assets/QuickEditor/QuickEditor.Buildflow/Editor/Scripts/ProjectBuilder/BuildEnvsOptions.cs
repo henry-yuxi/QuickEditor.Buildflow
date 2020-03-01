@@ -79,28 +79,28 @@ namespace QuickEditor.Buildflow
             {
                 AddBuildOptions(BuildOptions.Development);
             }
-            PlayerSettingsResolver.EditorBuildSettings.ApplySettings(androidBuildSystem: androidBuildSystem);
-            PlayerSettingsResolver.EditorBuildSettings.ApplySettings(release);
-            PlayerSettingsResolver.BundleVersion.ApplySettings(version, buildNumber);
+            UnityEditorResolver.EditorBuildSettings.ApplySettings(androidBuildSystem: androidBuildSystem);
+            UnityEditorResolver.EditorBuildSettings.ApplySettings(release);
+            UnityEditorResolver.BundleVersion.ApplySettings(version, buildNumber);
         }
 
         protected void ApplyBuildSettings()
         {
             if (androidExportSystem == ProjectBuildPresetSettings.AndroidExportSystem.AndroidProject)
             {
-                PlayerSettingsResolver.Android.ApplyExportSettings(exportAsGoogleAndroidProject: true, buildApkPerCpuArchitecture: false, buildAppBundle: false, useAPKExpansionFiles: useAPKExpansionFiles);
+                UnityEditorResolver.PlayerSettings.Android.ApplyExportSettings(exportAsGoogleAndroidProject: true, buildApkPerCpuArchitecture: false, buildAppBundle: false, useAPKExpansionFiles: useAPKExpansionFiles);
             }
             else if (androidExportSystem == ProjectBuildPresetSettings.AndroidExportSystem.AppBundle)
             {
-                PlayerSettingsResolver.Android.ApplyExportSettings(exportAsGoogleAndroidProject: false, buildApkPerCpuArchitecture: false, buildAppBundle: true, useAPKExpansionFiles: useAPKExpansionFiles);
+                UnityEditorResolver.PlayerSettings.Android.ApplyExportSettings(exportAsGoogleAndroidProject: false, buildApkPerCpuArchitecture: false, buildAppBundle: true, useAPKExpansionFiles: useAPKExpansionFiles);
             }
             else if (androidExportSystem == ProjectBuildPresetSettings.AndroidExportSystem.SingleAPK)
             {
-                PlayerSettingsResolver.Android.ApplyExportSettings(exportAsGoogleAndroidProject: false, buildApkPerCpuArchitecture: false, buildAppBundle: false, useAPKExpansionFiles: useAPKExpansionFiles);
+                UnityEditorResolver.PlayerSettings.Android.ApplyExportSettings(exportAsGoogleAndroidProject: false, buildApkPerCpuArchitecture: false, buildAppBundle: false, useAPKExpansionFiles: useAPKExpansionFiles);
             }
             else if (androidExportSystem == ProjectBuildPresetSettings.AndroidExportSystem.SplitArchitectureAPK)
             {
-                PlayerSettingsResolver.Android.ApplyExportSettings(exportAsGoogleAndroidProject: false, buildApkPerCpuArchitecture: true, buildAppBundle: false, useAPKExpansionFiles: useAPKExpansionFiles);
+                UnityEditorResolver.PlayerSettings.Android.ApplyExportSettings(exportAsGoogleAndroidProject: false, buildApkPerCpuArchitecture: true, buildAppBundle: false, useAPKExpansionFiles: useAPKExpansionFiles);
             }
         }
 
